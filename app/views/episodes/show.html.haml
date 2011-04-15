@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @episode.title
+%p
+  %b Content:
+  = @episode.content
+%p
+  %b Show:
+  = @episode.show
+
+= link_to 'Edit', edit_episode_path(@episode)
+\|
+= link_to 'Back', episodes_path

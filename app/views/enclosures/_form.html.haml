@@ -1,0 +1,19 @@
+= form_for @enclosure do |f|
+  -if @enclosure.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@enclosure.errors.count, "error")} prohibited this enclosure from being saved:"
+      %ul
+        - @enclosure.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :feed
+    = f.text_field :feed
+  .field
+    = f.label :episode
+    = f.text_field :episode
+  .field
+    = f.label :url
+    = f.text_field :url
+  .actions
+    = f.submit 'Save'

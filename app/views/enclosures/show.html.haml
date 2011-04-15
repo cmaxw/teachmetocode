@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Feed:
+  = @enclosure.feed
+%p
+  %b Episode:
+  = @enclosure.episode
+%p
+  %b Url:
+  = @enclosure.url
+
+= link_to 'Edit', edit_enclosure_path(@enclosure)
+\|
+= link_to 'Back', enclosures_path

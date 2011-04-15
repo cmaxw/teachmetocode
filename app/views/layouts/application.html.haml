@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'grid.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'text.css', :media => 'screen, projection'
+
+    %title Teach Me To Code > Ruby and Rails Tutorial, Ruby Tutorial, Javascript Tutorial, CSS Tutorial
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body.two-column
+    #header
+      .logo
+        = link_to image_tag("tmtc-text-final.png"), "/"
+      .nav
+        %ul
+          %li
+            = link_to "Home", "/"
+          %li
+            = link_to "About", "/about"
+          %li
+            = link_to "Shows", "/shows"
+      .clear
+    #content
+      #main-content
+        %p.notice
+          = notice
+        %p.alert
+          = alert
+        = yield
+      #sidebar
+        Sidebar
+    #footer
+      Teach Me To Code &copy; Intentional Excellence Productions, LLC

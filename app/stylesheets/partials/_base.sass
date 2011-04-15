@@ -1,0 +1,47 @@
+// Rails notices
+
+.notice
+  color: green
+
+.alert
+  color: red
+
+// The following generates the default grids provided by the css version of 960.gs
+.container_12
+  +grid-system(12)
+
+.container_16
+  +grid-system(16)
+
+// But most compass users prefer to construct semantic layouts like so (two column layout with header and footer):
+
+!ninesixty_columns = 16
+.two-column
+  +grid-container
+  background: url('/images/marble.jpg')
+  #header,
+  #footer,
+  #sidebar,
+  #main-content
+    +grid-unit-base
+  #header, #footer
+    +grid(16)
+    background: url('/images/header_background.png')
+  #footer
+    background-position: 0 300px
+  #sidebar
+    +grid(5)
+    +omega
+    min-height: 600px
+  #main-content
+    +grid(11)
+    +alpha
+    width: 599px
+    min-height: 600px
+    padding: 0 20px
+    border-right: 1px solid gray
+  #content
+    +grid(16)
+    min-height: 600px
+    background: url('/images/clouds.jpg')
+    

@@ -1,0 +1,23 @@
+%h1 Listing enclosures
+
+%table
+  %tr
+    %th Feed
+    %th Episode
+    %th Url
+    %th
+    %th
+    %th
+
+  - @enclosures.each do |enclosure|
+    %tr
+      %td= enclosure.feed
+      %td= enclosure.episode
+      %td= enclosure.url
+      %td= link_to 'Show', enclosure
+      %td= link_to 'Edit', edit_enclosure_path(enclosure)
+      %td= link_to 'Destroy', enclosure, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Enclosure', new_enclosure_path
