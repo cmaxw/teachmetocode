@@ -80,4 +80,10 @@ class EpisodesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def import
+    if request.post?
+      
+    end
+  end
 end

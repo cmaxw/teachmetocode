@@ -24,3 +24,11 @@ Factory.define(:show) do |s|
   s.name { Factory.next(:show_name) }
   s.slug { Factory.next(:slug) }
 end
+
+Factory.sequence(:category_name) do |n|
+  "category ##{n}"
+end
+
+Factory.define(:category) do |s|
+  s.name { Factory.next(:category_name) }
+end
