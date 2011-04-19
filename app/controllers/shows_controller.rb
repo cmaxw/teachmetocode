@@ -15,9 +15,12 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.xml
   def show
-    show_id = (params[:show_id] || params[:id]).split("-").first
-    @show = Show.find(show_id)
-
+    if params[:show_id]
+      @show = Show.find_by_slug(params[:show_id])
+    else
+      @show = Show.find(params[:id])
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @show }

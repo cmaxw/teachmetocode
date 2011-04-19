@@ -759,3 +759,29 @@ a img {
 .nav ul li a.active {
   color: green;
 }
+
+/* line 2, ../../app/stylesheets/partials/_shows_list.sass */
+.show .show_image {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 40px;
+  margin-left: 0;
+  width: 150px;
+}
+/* line 6, ../../app/stylesheets/partials/_shows_list.sass */
+.show .show_details {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 400px;
+  width: 420px;
+  margin-right: 0;
+}
+/* line 11, ../../app/stylesheets/partials/_shows_list.sass */
+.show .show_details h2 a {
+  text-decoration: none;
+  color: black;
+}

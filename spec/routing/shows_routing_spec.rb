@@ -15,6 +15,10 @@ describe ShowsController do
       { :get => "/shows/1" }.should route_to(:controller => "shows", :action => "show", :id => "1")
     end
 
+    it "recognizes and generates #show" do
+      { :get => "/some_show" }.should route_to(:controller => "shows", :action => "show", :show_id => "some_show")
+    end
+
     it "recognizes and generates #edit" do
       { :get => "/shows/1/edit" }.should route_to(:controller => "shows", :action => "edit", :id => "1")
     end

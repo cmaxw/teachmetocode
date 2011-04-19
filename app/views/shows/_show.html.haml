@@ -1,0 +1,12 @@
+.show
+  .show_image
+    = image_tag show.image.url(:mini)
+  .show_details
+    %h2
+      = link_to show.name, "/#{show.slug}"
+    .show_description
+      = show.description
+    - if current_user && current_user.admin?
+      .show_admin_links
+        = link_to "Edit", edit_show_path(show)
+        = link_to "Delete", show_path(show), :method => :delete, :confirm => "Are you sure?"

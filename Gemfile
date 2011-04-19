@@ -36,4 +36,5 @@ group :development, :test do
   gem 'annotate'
   gem 'flexmock'
   gem 'database_cleaner'
+  gem 'launchy', '0.3.7'
 end

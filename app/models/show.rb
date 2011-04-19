@@ -2,9 +2,7 @@ class Show < ActiveRecord::Base
   has_many :episodes
   has_and_belongs_to_many :feeds
   
-  def to_param
-    "#{id}-#{name.parameterize}"
-  end
+  has_attached_file :image, :styles => {:itunes => "600x600", :small => "300x300", :mini => "150x150"}
 end
 
 # == Schema Information

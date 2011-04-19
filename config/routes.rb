@@ -1,4 +1,8 @@
 Tmtc2::Application.routes.draw do
+  resources :tags
+
+  resources :categories
+
   devise_for :users
 
   resources :enclosures

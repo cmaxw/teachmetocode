@@ -29,3 +29,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+def login_admin
+  user = Factory.create(:admin)
+  visit "/users/sign_in"
+  fill_in "user[email]", :with => "chuck@teachmetocode.com"
+  fill_in "user[password]", :with => "password"
+  click_button "Sign in"
+end
