@@ -56,4 +56,24 @@ In this series, I attempt to recreate a twitter style application called 'Flitte
 }
     post.published_at.getutc.should == Time.parse("2009-09-06 23:15:51 UTC")
   end
+  
+  it "adds categories to posts" do 
+    @wxr_parser.parse
+    post = @show.episodes.first
+    categories = post.categories.map(&:name)
+    categories.size.should == 1
+    categories.should include("Ruby on Rails")
+  end
+  
+  it "adds tags to posts" do 
+    @wxr_parser.parse
+    post = @show.episodes.first
+    tags = post.tags.map(&:name)
+    tags.size.should == 5
+    tags.should include("authentication")
+    tags.should include("gems")
+    tags.should include("rails")
+    tags.should include("ruby")
+    tags.should include("twitter")
+  end
 end

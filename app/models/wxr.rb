@@ -28,12 +28,34 @@ class WXR
   def extract_posts
     @doc.xpath("//item").each do |post|
       if post.xpath(".//wp:post_type").text == "post"
-        post_title = post.xpath(".//title").text
-        post_slug = post.xpath(".//link").text.split("/").compact.last
-        post_pub_date = Time.parse(post.xpath(".//pubDate").text)
-        post_content = post.xpath(".//content:encoded").children.first.text
-        @show.episodes.create(:title => post_title, :slug => post_slug, :published_at => post_pub_date, :copy => post_content) 
+        episode = create_episode(post)
+        add_categories(post, episode)
+        add_tags(post, episode)
       end
+    end
+  end
+  
+  def create_episode(post)
+    post_title = post.xpath(".//title").text
+    post_slug = post.xpath(".//link").text.split("/").compact.last
+    post_pub_date = Time.parse(post.xpath(".//pubDate").text)
+    post_content = post.xpath(".//content:encoded").children.first.text
+    @show.episodes.create(:title => post_title, :slug => post_slug, :published_at => post_pub_date, :copy => post_content)
+  end
+  
+  def add_categories(post, episode)
+    post.xpath(".//category[@domain='category']").each do |category|
+      cat_name = category.children.first.text
+      cat = Category.find_or_create_by_name(cat_name)
+      episode.categories << cat
+    end
+  end
+  
+  def add_tags(post, episode)
+    post.xpath(".//category[@domain='post_tag']").each do |tag|
+      tag_name = tag.children.first.text
+      t = Tag.find_or_create_by_name(tag_name)
+      episode.tags << t
     end
   end
 end

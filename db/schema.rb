@@ -10,13 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419202850) do
+ActiveRecord::Schema.define(:version => 20110420171026) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categories_episodes", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "episode_id"
+  end
+
+  add_index "categories_episodes", ["category_id"], :name => "index_categories_episodes_on_category_id"
+  add_index "categories_episodes", ["episode_id"], :name => "index_categories_episodes_on_episode_id"
 
   create_table "enclosures", :force => true do |t|
     t.integer  "feed_id"
@@ -35,6 +43,14 @@ ActiveRecord::Schema.define(:version => 20110419202850) do
     t.string   "slug"
     t.datetime "published_at"
   end
+
+  create_table "episodes_tags", :id => false, :force => true do |t|
+    t.integer "episode_id"
+    t.integer "tag_id"
+  end
+
+  add_index "episodes_tags", ["episode_id"], :name => "index_episodes_tags_on_episode_id"
+  add_index "episodes_tags", ["tag_id"], :name => "index_episodes_tags_on_tag_id"
 
   create_table "feeds", :force => true do |t|
     t.string   "name"
