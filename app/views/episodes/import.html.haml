@@ -1,0 +1,7 @@
+%h1
+  Import shows into
+  = @show.name
+  
+= form_tag import_show_episodes_path(@show), :multipart => true do
+  = file_field_tag :wxr_file
+  = submit_tag "Import"

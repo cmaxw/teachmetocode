@@ -12,12 +12,14 @@
 
 .container_16
   +grid-system(16)
+  width: 1000px
 
 // But most compass users prefer to construct semantic layouts like so (two column layout with header and footer):
 
 !ninesixty_columns = 16
 .two-column
   +grid-container
+  width: 1000px
   background: url('/images/marble.jpg')
   #header,
   #footer,
@@ -26,6 +28,7 @@
     +grid-unit-base
   #header, #footer
     +grid(16)
+    width: 1000px
     background: url('/images/header_background.png')
   #footer
     background-position: 0 300px
@@ -36,12 +39,13 @@
   #main-content
     +grid(11)
     +alpha
-    width: 599px
+    width: 639px
     min-height: 600px
     padding: 0 20px
     border-right: 1px solid gray
   #content
     +grid(16)
+    width: 1000px
     min-height: 600px
     background: url('/images/clouds.jpg')
     

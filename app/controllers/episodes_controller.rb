@@ -1,8 +1,11 @@
 class EpisodesController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /episodes
   # GET /episodes.xml
   def index
-    @episodes = Episode.all
+    @show = Show.find(params[:show_id])
+    @episodes = @show.episodes.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +27,7 @@ class EpisodesController < ApplicationController
   # GET /episodes/new
   # GET /episodes/new.xml
   def new
+    @show = Show.find(params[:show_id])
     @episode = Episode.new
 
     respond_to do |format|
@@ -40,7 +44,8 @@ class EpisodesController < ApplicationController
   # POST /episodes
   # POST /episodes.xml
   def create
-    @episode = Episode.new(params[:episode])
+    @show = Show.find(params[:show_id])
+    @episode = @show.episodes.build(params[:episode])
 
     respond_to do |format|
       if @episode.save
@@ -82,8 +87,10 @@ class EpisodesController < ApplicationController
   end
   
   def import
+    @show = Show.find(params[:show_id])
     if request.post?
-      
+      wxr = WXR.new(params[:wxr_file].read, @show)
+      wxr.parse
     end
   end
 end

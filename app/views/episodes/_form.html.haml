@@ -1,4 +1,4 @@
-= form_for @episode do |f|
+= form_for @episode, :url => show_episodes_path(@show) do |f|
   -if @episode.errors.any?
     #error_explanation
       %h2= "#{pluralize(@episode.errors.count, "error")} prohibited this episode from being saved:"
@@ -10,10 +10,7 @@
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :content
-    = f.text_area :content
-  .field
-    = f.label :show
-    = f.text_field :show
+    = f.label :copy
+    = f.text_area :copy
   .actions
     = f.submit 'Save'

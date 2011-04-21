@@ -336,6 +336,7 @@ a img {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
+  width: 1000px;
 }
 /* line 35, ../../../../../../../usr/local/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.2/stylesheets/960/_grid.sass */
 .container_16 .grid_1, .container_16 .grid_2, .container_16 .grid_3, .container_16 .grid_4, .container_16 .grid_5, .container_16 .grid_6, .container_16 .grid_7, .container_16 .grid_8, .container_16 .grid_9, .container_16 .grid_10, .container_16 .grid_11, .container_16 .grid_12, .container_16 .grid_13, .container_16 .grid_14, .container_16 .grid_15, .container_16 .grid_16 {
@@ -670,14 +671,15 @@ a img {
   left: -960px;
 }
 
-/* line 19, ../../app/stylesheets/partials/_base.sass */
+/* line 20, ../../app/stylesheets/partials/_base.sass */
 .two-column {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
+  width: 1000px;
   background: url("/images/marble.jpg");
 }
-/* line 22, ../../app/stylesheets/partials/_base.sass */
+/* line 24, ../../app/stylesheets/partials/_base.sass */
 .two-column #header,
 .two-column #footer,
 .two-column #sidebar,
@@ -687,20 +689,21 @@ a img {
   margin-left: 10px;
   margin-right: 10px;
 }
-/* line 27, ../../app/stylesheets/partials/_base.sass */
+/* line 29, ../../app/stylesheets/partials/_base.sass */
 .two-column #header, .two-column #footer {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 940px;
+  width: 1000px;
   background: url("/images/header_background.png");
 }
-/* line 30, ../../app/stylesheets/partials/_base.sass */
+/* line 33, ../../app/stylesheets/partials/_base.sass */
 .two-column #footer {
   background-position: 0 300px;
 }
-/* line 32, ../../app/stylesheets/partials/_base.sass */
+/* line 35, ../../app/stylesheets/partials/_base.sass */
 .two-column #sidebar {
   display: inline;
   float: left;
@@ -710,7 +713,7 @@ a img {
   margin-right: 0;
   min-height: 600px;
 }
-/* line 36, ../../app/stylesheets/partials/_base.sass */
+/* line 39, ../../app/stylesheets/partials/_base.sass */
 .two-column #main-content {
   display: inline;
   float: left;
@@ -718,18 +721,19 @@ a img {
   margin-right: 10px;
   width: 640px;
   margin-left: 0;
-  width: 599px;
+  width: 639px;
   min-height: 600px;
   padding: 0 20px;
   border-right: 1px solid gray;
 }
-/* line 43, ../../app/stylesheets/partials/_base.sass */
+/* line 46, ../../app/stylesheets/partials/_base.sass */
 .two-column #content {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 940px;
+  width: 1000px;
   min-height: 600px;
   background: url("/images/clouds.jpg");
 }

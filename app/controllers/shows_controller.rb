@@ -20,6 +20,7 @@ class ShowsController < ApplicationController
     else
       @show = Show.find(params[:id])
     end
+    @episodes = @show.episodes.order("published_at DESC").paginate :page => params[:page], :per_page => 10
     
     respond_to do |format|
       format.html # show.html.erb

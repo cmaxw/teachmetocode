@@ -1,0 +1,8 @@
+.episode
+  %h2.title
+    = episode.title
+  - if episode.show.show_image?
+    .show_image
+      = image_tag episode.show.image.url(:mini)
+  .copy
+    = raw episode.copy

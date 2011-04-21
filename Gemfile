@@ -16,6 +16,7 @@ gem 'cancan'
 gem "paperclip", "~> 2.3"
 gem 'rmagick'
 gem 'nokogiri'
+gem "will_paginate", "~> 3.0.pre2"
 
 
 # Bundle the extra gems:

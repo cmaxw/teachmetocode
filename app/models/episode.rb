@@ -3,6 +3,11 @@ class Episode < ActiveRecord::Base
   has_many :enclosures
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
+  
+  def fix_formatting
+    self.copy = ("<p>" + self.copy.gsub(/^<p>/, "").gsub(/<\/p>$/, "").split("\n\n").join("</p><p>").split("\n").join("<br/>") + "</p>")
+    self.save
+  end
 end
 
 
