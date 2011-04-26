@@ -12,5 +12,13 @@
   .field
     = f.label :copy
     = f.text_area :copy
+    
+  %fieldset
+    %legend
+      Enclosures
+    = f.fields_for :enclosures do |enclosures_form|
+      = render 'enclosure_fields', :f => enclosures_form
+    %p
+      = link_to_add_fields "Add Enclosure", f, :enclosures
   .actions
     = f.submit 'Save'

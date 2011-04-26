@@ -5,6 +5,7 @@ describe Show do
 end
 
 
+
 # == Schema Information
 #
 # Table name: shows
@@ -19,5 +20,6 @@ end
 #  image_file_size    :integer(4)
 #  image_updated_at   :datetime
 #  description        :text
+#  show_image         :boolean(1)
 #
 

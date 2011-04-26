@@ -1,6 +1,6 @@
 .episode
   %h2.title
-    = episode.title
+    = link_to episode.title, "/#{@show.slug}/#{episode.slug}"
   - if episode.show.show_image?
     .show_image
       = image_tag episode.show.image.url(:mini)

@@ -789,3 +789,13 @@ a img {
   text-decoration: none;
   color: black;
 }
+
+/* line 2, ../../app/stylesheets/partials/_episodes.sass */
+.episode .show_image {
+  float: left;
+}
+/* line 5, ../../app/stylesheets/partials/_episodes.sass */
+.episode .title a {
+  text-decoration: none;
+  color: black;
+}

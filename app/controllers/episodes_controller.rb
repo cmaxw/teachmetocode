@@ -1,5 +1,5 @@
 class EpisodesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:show]
   
   # GET /episodes
   # GET /episodes.xml
@@ -16,7 +16,8 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.xml
   def show
-    @episode = Episode.find(params[:id])
+    @show = Show.find_by_slug(params[:show_id])
+    @episode = @show.episodes.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,7 +50,7 @@ class EpisodesController < ApplicationController
 
     respond_to do |format|
       if @episode.save
-        format.html { redirect_to(@episode, :notice => 'Episode was successfully created.') }
+        format.html { redirect_to("/#{@show.slug}/#{@episode.slug}", :notice => 'Episode was successfully created.') }
         format.xml  { render :xml => @episode, :status => :created, :location => @episode }
       else
         format.html { render :action => "new" }

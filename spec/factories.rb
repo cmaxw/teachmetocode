@@ -32,3 +32,23 @@ end
 Factory.define(:category) do |s|
   s.name { Factory.next(:category_name) }
 end
+
+Factory.sequence(:feed_name) do |n|
+  "feed ##{n}"
+end
+
+Factory.define(:feed) do |s|
+  s.name { Factory.next(:feed_name) }
+  s.slug { Factory.next(:slug)}
+end
+
+Factory.sequence(:episode_name) do |n|
+  "episode ##{n}"
+end
+
+Factory.define(:episode) do |s|
+  s.title { Factory.next(:episode_name) }
+  s.slug { Factory.next(:slug)}
+  s.copy "This is the episode copy."
+  s.show { |e| e.association(:show) }
+end

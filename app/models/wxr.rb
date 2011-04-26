@@ -31,6 +31,7 @@ class WXR
         episode = create_episode(post)
         add_categories(post, episode)
         add_tags(post, episode)
+        add_enclosures(post, episode)
       end
     end
   end
@@ -57,5 +58,33 @@ class WXR
       t = Tag.find_or_create_by_name(tag_name)
       episode.tags << t
     end
+  end
+
+  def add_enclosures(post, episode)
+    post.xpath(".//wp:postmeta").each do |meta|
+      key = meta.xpath(".//wp:meta_key").first.text
+      if key.include?("enclosure")
+        feed = create_feed(key)
+        enclosure_meta = meta.xpath(".//wp:meta_value").first.text.split("\n")
+        url = enclosure_meta[0]
+        size = enclosure_meta[1]
+        mime = enclosure_meta[2]
+        episode.enclosures.create(:feed => feed, :url => url, :size => size, :mime => mime)
+      end
+    end
+  end
+  
+  def create_feed(key)
+    if key == "enclosure"
+      feed = Feed.find_or_create_by_name(@show.name)
+      feed.slug = @show.name.split(/\s/).join("-").gsub(/[^-a-zA-Z0-9]+/, "").gsub(/-+/, "-") if feed.new_record?
+      feed.save
+    else
+      feed_name = @show.name + " - #{key.gsub(":enclosure", "")}"
+      feed = Feed.find_or_create_by_name(feed_name)
+      feed.slug = feed_name.split(/\s/).join("-").gsub(/[^-a-zA-Z0-9]+/, "").gsub(/-+/, "-") if feed.new_record?
+      feed.save
+    end
+    feed
   end
 end

@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe Episode do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should return the enclosure for the feed" do
+    episode = Factory.create(:episode)
+    feed = Factory.create(:feed)
+    enclosure = episode.enclosures.create(:feed => feed, :url => "http://google.com")
+    episode.enclosure(feed).should == enclosure
+  end
 end
 
 

@@ -70,6 +70,7 @@ Tmtc2::Application.routes.draw do
   root :to => "home#index"
   
   match ":show_id", :to => "shows#show"
+  match ":show_id/:id", :to => "episodes#show"
 
   # See how all your routes lay out with "rake routes"
 

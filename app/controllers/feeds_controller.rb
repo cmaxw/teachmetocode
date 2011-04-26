@@ -13,12 +13,11 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.xml
   def show
-    @feed = Feed.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @feed }
-    end
+    request.format = :xml
+    @feed = Feed.find_by_slug(params[:id])
+    @episodes = @feed.episodes
+    render :layout => false
+    response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end
 
   # GET /feeds/new
@@ -34,7 +33,7 @@ class FeedsController < ApplicationController
 
   # GET /feeds/1/edit
   def edit
-    @feed = Feed.find(params[:id])
+    @feed = Feed.find_by_slug(params[:id])
   end
 
   # POST /feeds
@@ -44,7 +43,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to(@feed, :notice => 'Feed was successfully created.') }
+        format.html { redirect_to(edit_feed_path(@feed), :notice => 'Feed was successfully created.') }
         format.xml  { render :xml => @feed, :status => :created, :location => @feed }
       else
         format.html { render :action => "new" }
@@ -56,11 +55,11 @@ class FeedsController < ApplicationController
   # PUT /feeds/1
   # PUT /feeds/1.xml
   def update
-    @feed = Feed.find(params[:id])
+    @feed = Feed.find_by_slug(params[:id])
 
     respond_to do |format|
       if @feed.update_attributes(params[:feed])
-        format.html { redirect_to(@feed, :notice => 'Feed was successfully updated.') }
+        format.html { redirect_to(edit_feed_path(@feed), :notice => 'Feed was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

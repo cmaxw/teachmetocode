@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421193302) do
+ActiveRecord::Schema.define(:version => 20110426043459) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110421193302) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mime"
+    t.string   "size"
   end
 
   create_table "episodes", :force => true do |t|
@@ -56,6 +58,8 @@ ActiveRecord::Schema.define(:version => 20110421193302) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
+    t.text     "description"
   end
 
   create_table "feeds_shows", :id => false, :force => true do |t|

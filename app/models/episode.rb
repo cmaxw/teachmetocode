@@ -4,9 +4,16 @@ class Episode < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tags
   
+  before_save :fix_formatting
+  
+  accepts_nested_attributes_for :enclosures
+  
   def fix_formatting
     self.copy = ("<p>" + self.copy.gsub(/^<p>/, "").gsub(/<\/p>$/, "").split("\n\n").join("</p><p>").split("\n").join("<br/>") + "</p>")
-    self.save
+  end
+  
+  def enclosure(feed)
+    self.enclosures.where("feed_id = #{feed[:id]}").first if feed
   end
 end
 
