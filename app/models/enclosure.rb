@@ -10,7 +10,7 @@ class Enclosure < ActiveRecord::Base
     if self.size.blank?
       uri = URI.parse(self.url)
       http = Net::HTTP.new(uri.host)
-      response = http.request_head(uri.path)
+      response = http.request_head(uri.path.blank? ? "/" : uri.path)
       self.size = response['content-length'] || "0"
       self.mime = uri.path.match(/.m4v$/) ? "video/x-m4v" : MIME::Types.type_for(uri.path).first.content_type
     end

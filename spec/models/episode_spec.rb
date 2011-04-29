@@ -4,7 +4,7 @@ describe Episode do
   it "should return the enclosure for the feed" do
     episode = Factory.create(:episode)
     feed = Factory.create(:feed)
-    enclosure = episode.enclosures.create(:feed => feed, :url => "http://google.com")
+    enclosure = episode.enclosures.create(:feed => feed, :url => "http://google.com/alf.m4v")
     episode.enclosure(feed).should == enclosure
   end
 end
