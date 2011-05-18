@@ -12,5 +12,11 @@
   .field
     = f.label :slug
     = f.text_field :slug
+  .field
+    Shows
+  - Show.all.each do |show|
+    .field
+      = check_box_tag "feed[show_ids][]", show[:id], @feed.shows.include?(show), :id => "feed_show_#{show[:id]}"
+      = label_tag "feed_show_#{show[:id]}", show.name
   .actions
     = f.submit 'Save'
