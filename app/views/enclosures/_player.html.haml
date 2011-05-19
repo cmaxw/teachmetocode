@@ -1,0 +1,5 @@
+%p.flash_player{:id => "flash_player_#{enclosure.id}"}
+  Flash Player
+    
+%script{:type =>"text/javascript"}
+  = raw "AudioPlayer.embed(\"flash_player_#{enclosure.id}\", {soundFile: \"#{enclosure.url}\"});"

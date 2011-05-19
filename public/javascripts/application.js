@@ -27,3 +27,14 @@ function string_to_slug(str) {
   return str;
 }
 
+function load_player(enclosure_id, enclosure_url) {
+  $("#jquery_jplayer_" + enclosure_id).jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {
+        mp3: enclosure_url
+      });
+    },
+    swfPath: "/javascripts",
+    supplied: "mp3"
+  });  
+}

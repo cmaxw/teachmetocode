@@ -6,6 +6,9 @@
 
     %title Teach Me To Code > Ruby and Rails Tutorial, Ruby Tutorial, Javascript Tutorial, CSS Tutorial
     = javascript_include_tag :defaults
+    = javascript_include_tag "audio-player"
+    %script{:type => "text/javascript"}
+      = raw "AudioPlayer.setup(\"http://#{request.host}#{":#{request.port}" if request.port != 80}/javascripts/player.swf\", {width: 290});"
     = csrf_meta_tag
   %body.two-column
     #header

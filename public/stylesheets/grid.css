@@ -735,7 +735,7 @@ a img {
   width: 940px;
   width: 1000px;
   min-height: 600px;
-  background: url("/images/clouds.jpg");
+  background: white;
 }
 
 /* line 1, ../../app/stylesheets/partials/_nav_menu.sass */

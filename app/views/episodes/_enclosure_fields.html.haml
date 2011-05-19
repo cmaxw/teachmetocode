@@ -4,4 +4,6 @@
     = f.text_field :url
     = f.select :feed_id, @show.feeds.map {|feed| [feed.name, feed.id]}
     = link_to_remove_fields "remove", f
-    
+    %br
+    = f.check_box :show_player
+    = f.label :show_player

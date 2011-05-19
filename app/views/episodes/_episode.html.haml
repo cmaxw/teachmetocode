@@ -4,5 +4,8 @@
   - if episode.show.show_image?
     .show_image
       = image_tag episode.show.image.url(:mini)
+  .players
+    - episode.enclosures.where(:show_player => true).all.each do |enclosure|
+      = render :partial => "enclosures/player", :locals => {:enclosure => enclosure}
   .copy
     = raw episode.copy
