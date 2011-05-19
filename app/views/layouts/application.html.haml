@@ -31,6 +31,10 @@
           = alert
         = yield
       #sidebar
-        Sidebar
+        %h3 Our Shows
+        %ul
+          - Show.all.each do |show|
+            %li
+              = link_to show.name, "/#{show.slug}"
     #footer
       Teach Me To Code &copy; Intentional Excellence Productions, LLC
