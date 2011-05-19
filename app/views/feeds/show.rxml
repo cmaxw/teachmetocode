@@ -1,20 +1,21 @@
 xml.instruct!
 
 xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
- xml.channel do
+  xml.channel do
 
-   xml.title       @feed.name
-   xml.link        feed_url(@feed)
-   xml.description @feed.description
+    xml.title       @feed.name
+    xml.link        feed_url(@feed)
+    xml.description @feed.description
 
-   @episodes.each do |episode|
-     xml.item do
-       xml.title       episode.title
-       xml.link        "#{request.host}/#{episode.show.slug}/#{episode.slug}"
-       xml.description episode.copy
-       xml.guid        "#{request.host}/#{episode.show.slug}/#{episode.slug}"
-     end
-   end
-
- end
+    @episodes.each do |episode|
+      xml.item do
+        xml.title       episode.title
+        xml.link        "#{request.host}/#{episode.show.slug}/#{episode.slug}"
+        xml.description episode.copy
+        xml.guid        "#{request.host}-#{episode.show.slug}-#{episode.slug}".gsub(".", "-")
+        enclosure = episode.enclosure(@feed)
+        xml.enclosure   "url" => enclosure.url, "length" => enclosure.size, "type" => enclosure.mime if enclosure
+      end
+    end
+  end
 end

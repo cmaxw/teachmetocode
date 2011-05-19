@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @episode
+= link_to 'Show', show_episode_path(@show, @episode)
 \|
-= link_to 'Back', episodes_path
+= link_to 'Back', show_episodes_path(@show)

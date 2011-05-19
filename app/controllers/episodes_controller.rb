@@ -16,8 +16,8 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.xml
   def show
-    @show = Show.find_by_slug(params[:show_id])
-    @episode = @show.episodes.find_by_slug(params[:id])
+    @show = Show.find_by_slug(params[:show_id]) || Show.find_by_id(params[:show_id])
+    @episode = @show.episodes.find_by_slug(params[:id]) || @show.episodes.find_by_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,6 +39,7 @@ class EpisodesController < ApplicationController
 
   # GET /episodes/1/edit
   def edit
+    @show = Show.find(params[:show_id])
     @episode = Episode.find(params[:id])
   end
 
@@ -62,11 +63,12 @@ class EpisodesController < ApplicationController
   # PUT /episodes/1
   # PUT /episodes/1.xml
   def update
-    @episode = Episode.find(params[:id])
+    @show = Show.find(params[:show_id])
+    @episode = @show.episodes.find(params[:id])
 
     respond_to do |format|
       if @episode.update_attributes(params[:episode])
-        format.html { redirect_to(@episode, :notice => 'Episode was successfully updated.') }
+        format.html { redirect_to(show_episode_url(@show, @episode), :notice => 'Episode was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
